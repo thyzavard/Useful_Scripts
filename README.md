@@ -1,4 +1,4 @@
-# CleanBootPartitionUbuntu
+# Useful Scripts
 
 Script that safely cleans up boot parition on Ubuntu.
 
