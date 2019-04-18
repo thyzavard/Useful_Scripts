@@ -36,5 +36,5 @@ case $answer_reboot in
 		;;
 	[Nn]* ) echo "Done."; exit 0
 		;;
-	* ) echo "Please answer yes ro no."; exit 1;;
+	* ) echo "Please answer yes or no."; exit 1;;
 esac
