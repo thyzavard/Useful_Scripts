@@ -16,8 +16,17 @@ kernelURL="https://kernel.ubuntu.com/~kernel-ppa/mainline/v$latestKernelVersion/
 echo "Dowloading the version $latestKernelVersion generic kernel."
 # Download the kernel
 download_package generic headers
+CODE_HEADERS="$?"
 download_package generic image
+CODE_IMAGE="$?"
 download_package generic modules
+CODE_MODULE="$?"
+
+if [ "$CODE_HEADERS" != "0" ] || [ "$CODE_IMAGE" != "0" ] || [ "$CODE_MODULE" != "0" ]; then
+	echo "Cannot download kernel file from kernel.ubuntu.com."
+	echo "Exiting..."
+	exit 1
+fi
 
 # Download the shared kernel headers
 wget $(lynx -listonly -dont-wrap-pre -dump $kernelURL | grep all | cut -d ' ' -f 4 | uniq)
